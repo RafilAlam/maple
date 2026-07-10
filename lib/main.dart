@@ -67,6 +67,12 @@ class _HomePageState extends State<HomePage> {
             options: MapOptions(
               initialCenter: const LatLng(1.3521, 103.8198),
               initialZoom: 13.0,
+              minZoom: 11.0,
+              maxZoom: 19.0,
+              cameraConstraint: CameraConstraint.contain(bounds: LatLngBounds(
+                LatLng(1.144, 103.535),
+                LatLng(1.494, 104.502),
+              )),
             ),
             children: [
               TileLayer(
