@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:device_preview/device_preview.dart';
 
 class MyCustomScrollbehaviour extends MaterialScrollBehavior {
@@ -61,7 +63,18 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: [
-          const Positioned.fill(child: ColoredBox(color: Color.fromARGB(15, 129, 165, 255))),
+          FlutterMap(
+            options: MapOptions(
+              initialCenter: const LatLng(1.3521, 103.8198),
+              initialZoom: 13.0,
+            ),
+            children: [
+              TileLayer(
+                urlTemplate: 'https://www.onemap.gov.sg/maps/tiles/Night/{z}/{x}/{y}.png',
+                userAgentPackageName: 'dev.maple.app',
+              ),
+            ],
+          ),
 
           DraggableScrollableSheet(
             initialChildSize: 0.5,
@@ -79,11 +92,11 @@ class _HomePageState extends State<HomePage> {
                       minHeight: constraints.maxHeight
                     ),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(30, 84, 128, 200),
+                      color: const Color.fromARGB(233, 53, 59, 69),
                       borderRadius: BorderRadius.circular(25.0),
                     ),
-                    margin: EdgeInsets.all(8.0),
-                    padding: EdgeInsets.all(8.0),
+                    margin: EdgeInsets.all(6.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Column(
                       children: [
                         Container(
